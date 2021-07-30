@@ -20,6 +20,35 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
    
     return Scaffold(
+      drawer: Drawer(
+        child: Column(
+          children: [
+            SizedBox(height: 20),
+            UserAccountsDrawerHeader(
+              accountName: Text('Hiverton Alves'),
+              accountEmail: Text('hiverton.alves@gmail.com'),
+              currentAccountPicture: ClipRRect(
+                child: Image.asset('images/logo.jpg'),
+                borderRadius: BorderRadius.circular(40),
+              ) ,
+            ),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text('Home'),
+              onTap: () {
+                Navigator.of(context).pushReplacementNamed('/home');
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.login),
+              title: Text('Logout'),
+              onTap: () {
+                Navigator.of(context).pushReplacementNamed('/');
+              },
+            )
+          ],
+        ),
+      ),
       appBar: AppBar(
         title: Text('Home Page'),
         actions: [CustomSwitch()],
@@ -62,19 +91,19 @@ class CustomContainer extends StatelessWidget {
   Widget build(BuildContext context) {
   
     return Container(
-              margin: const EdgeInsets.only(left: 5.0, right: 5.0, bottom: 2.5, top: 2.5),
-              child: Center(
-                child:Text(
-                  '$counter',
-                  style: TextStyle(
-                    color: Colors.white
-                  ),
-                )
+          margin: const EdgeInsets.only(left: 5.0, right: 5.0, bottom: 2.5, top: 2.5),
+          child: Center(
+            child:Text(
+              '$counter',
+              style: TextStyle(
+                color: Colors.white
               ),
-              width: 50,
-              height: 30,
-              color: Colors.blue,
-            );
+            )
+          ),
+          width: 50,
+          height: 30,
+          color: Colors.blue,
+        );
     }
 }
 
